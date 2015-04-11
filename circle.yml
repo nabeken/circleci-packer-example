@@ -1,0 +1,25 @@
+machine:
+  environment:
+    GIT_USER_EMAIL: you@example.org
+    GIT_USER_NAME: you
+    PATH: "${HOME}/bin:${PATH}"
+
+dependencies:
+  cache_directories:
+    - "~/bin"
+  pre:
+    - git config --global user.name "${GIT_USER_NAME}"
+    - git config --global user.email "${GIT_USER_EMAIL}"
+    - mkdir -p ~/bin
+    - ci/dependencies.sh
+
+test:
+  override:
+    - ./ci/packer-validate.sh
+
+deployment:
+  packer:
+    branch: packer
+    commands:
+      - ./ci/packer-build.rb
+      - ./ci/push_to_github.sh

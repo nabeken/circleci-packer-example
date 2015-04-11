@@ -1,0 +1,27 @@
+{
+  "variables": {
+    "ami_name": "ubuntu-14.04-docker-circleci"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "ap-northeast-1",
+      "source_ami": "ami-420ff642",
+      "instance_type": "c3.large",
+      "ssh_username": "ubuntu",
+      "ami_name": "{{user `ami_name`}}",
+      "tags": {
+        "Name": "{{user `ami_name`}}"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "sudo {{.Path}}",
+      "scripts": [
+        "scripts/ubuntu/install_docker.sh"
+      ]
+    }
+  ]
+}
