@@ -9,3 +9,10 @@ apt-get install -y \
   && :
 
 curl https://get.docker.com | sh -eux
+
+docker version
+
+curl https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz \
+  | tar -C /usr/local -xzf -
+
+/usr/local/go/bin/go version
