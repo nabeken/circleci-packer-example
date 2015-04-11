@@ -1,6 +1,6 @@
 {
   "variables": {
-    "ami_name": "ubuntu-14.04-docker-circleci"
+    "ami_name": "ubuntu-14.04-docker-golang"
   },
   "builders": [
     {
