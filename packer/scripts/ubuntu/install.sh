@@ -8,7 +8,7 @@ apt-get install -y \
   python-pip \
   ruby2.0 \
   wget \
-  && :
+  #
 
 curl https://get.docker.com | sh -eux
 
