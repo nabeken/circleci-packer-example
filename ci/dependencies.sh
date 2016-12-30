@@ -8,7 +8,7 @@ PACKER_URL="https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PAC
 if [ ! -f "${CIRCLECI_CACHE_DIR}/packer" ] || [[ ! "$(packer version)" =~ "Packer v${PACKER_VERSION}" ]]; then
   wget -O /tmp/packer.zip "${PACKER_URL}"
   echo "${PACKER_SHA1SUM} /tmp/packer.zip" | sha1sum --check -
-  unzip -ofd "${CIRCLECI_CACHE_DIR}" /tmp/packer.zip
+  unzip -oud "${CIRCLECI_CACHE_DIR}" /tmp/packer.zip
 fi
 
 packer version
